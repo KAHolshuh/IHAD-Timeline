@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html ng-app="batApp" ng-controller="HomeCtrl">
+
+<head>
+    <title>Dreamer Timeline</title>
+
+
+
+    <!--- CDN to animate.css --->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" />
+    <!--- CDN to bootstrap 2 css --->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
+    <!--- CDN to bootstrap 2 js --->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <!---CDN to Angular --->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <!---CDN to Angular Route --->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-route.js">
+    </script>
+    <!---CDN to jQuery --->
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+
+
+</head>
+
+
+
+<!--NAV BUTTONS UP TOP-->
+
+<body style="background-color: rgba(0,0,0, .9);">
+    <div class="container" style="height: inherit; width: 100%;">
+        <a class="btn col-xs-3" style="color: black; font-family: Roboto, sans-serif; font-weight: bold; background-color:rgba(0, 176, 212, 1); border-style: groove; border-color: black;" href="#/content1" ng-click="ShowContent1()">
+        Elementary</a>
+        <a class="btn col-xs-3" style="color: black; font-family: Roboto, sans-serif; font-weight: bold; background-color:rgba(0, 176, 212, 1); border-style: groove; border-color: black;" href="#/content2" ng-click="ShowContent2()">
+        Middle School</a>
+        <a class="btn col-xs-3" style="color: black; font-family: Roboto, sans-serif; font-weight: bold; background-color:rgba(0, 176, 212, 1); border-style: groove; border-color: black;" href="#/content3" ng-click="ShowContent3()">
+        High School</a>
+        <a class="btn col-xs-3" style="color: black; font-family: Roboto, sans-serif; font-weight: bold; background-color:rgba(0, 176, 212, 1); border-style: groove; border-color: black;" href="#/content4" ng-click="ShowContent4()">
+        College</a>
+        <br/>
+        <br/>
+
+
+
+        <!--PICTURES-->
+        <div class="container-fluid" style="padding: 15px;">
+            <center>
+                <a class="col-xs-3" ng-class="animation1" href="#/content1" ng-click="ShowContent1()" ng-show="show.showPic1">
+                    <img src="img/2.png" style="padding-top:140px;" class="img-responsive;" />
+                </a>
+                <a class="col-xs-3" ng-class="animation2" href="#/content2" ng-click="ShowContent2()" ng-show="show.showPic2">
+                    <img src="img/3.png" style="padding-top:100px;" class="img-responsive;" />
+                </a>
+                <a class="col-xs-3" ng-class="animation3" href="#/content3" ng-click="ShowContent3()" ng-show="show.showPic3">
+                    <img src="img/4.png" style="padding-top:60px;" class="img-responsive;" />
+                </a>
+                <a class="col-xs-3" ng-class="animation4" href="#/content4" ng-click="ShowContent4()" ng-show="show.showPic4">
+                    <img src="img/5.png" style="padding-top:20px;" class="img-responsive;" />
+                </a>
+            </center>
+
+
+
+            <span ng-show="show.content">
+        <span ng-view class="col-xs-9 offset-col-3 animated fadeInDown">
+    
+            
+        </span>
+            </span>
+
+        </div>
+
+
+        <!--LEGEND-->
+        <div class="container-fluid">
+            <div class="row" style="font-family: Roboto, sans-serif; margin-top:15px">
+                <span class="col-xs-1"></span>
+                <span class="col-xs-1" style="background-color:rgb(229, 130, 44); height:20px; border-radius:20px;"></span>
+                <span class="col-xs-1 container-fluid" style="color: white;">Academic</span>
+
+                <span class="col-xs-1" style="background-color:rgb(160, 210, 71); height:20px; border-radius:20px;"></span>
+                <span class="col-xs-1" style="color: white">Enrichment</span>
+
+                <span class="col-xs-1" style="background-color:rgb(255, 185, 102); height:20px; border-radius:20px;"></span>
+                <span class="col-xs-1" style="color: white">Career</span>
+
+                <span class="col-xs-1" style="background-color:rgb(0, 176, 212); height:20px; border-radius:20px;"></span>
+                <span class="col-xs-1" style="color: white">Parents</span>
+
+                <span class="col-xs-1" style="background-color:rgb(200, 223, 144); height:20px; border-radius:20px;"></span>
+                <span class="col-xs-1" style="color: white">Mentorship</span>
+                <span class="col-xs-1"></span>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+<script>
+    var app = angular.module("batApp", ['ngRoute']);
+
+    app.controller("HomeCtrl", ['$scope', function ($scope) {
+
+        $scope.show = {
+            showPic1: true,
+            showPic2: true,
+            showPic3: true,
+            showPic4: true
+        };
+
+
+
+        $scope.ShowContent1 = function () {
+            $scope.show = {
+                showPic1: true,
+                content: true
+            };
+            $scope.animation1 = "animated slideInLeft";
+        };
+
+        $scope.ShowContent2 = function () {
+            $scope.show = {
+                showPic2: true,
+                content: true
+            };
+
+            $scope.animation2 = "animated slideInLeft";
+        };
+
+        $scope.ShowContent3 = function () {
+            $scope.show = {
+                showPic3: true,
+                content: true
+            };
+
+            $scope.animation3 = "animated slideInLeft";
+        };
+
+        $scope.ShowContent4 = function () {
+            $scope.show = {
+                showPic4: true,
+                content: true
+            };
+
+            $scope.animation4 = "animated slideInLeft";
+        };
+
+    }]);
+
+    app.config(['$routeProvider', function ($routeProvider) {
+
+            $routeProvider.when("/content1", {
+                templateUrl: "partials/content1.html",
+                controller: "HomeCtrl"
+            });
+
+            $routeProvider.when("/content2", {
+                templateUrl: "partials/content2.html",
+                controller: "HomeCtrl"
+            });
+
+            $routeProvider.when("/content3", {
+                templateUrl: "partials/content3.html",
+                controller: "HomeCtrl"
+            });
+
+            $routeProvider.when("/content4", {
+                templateUrl: "partials/content4.html",
+                controller: "HomeCtrl"
+            });
+
+            $routeProvider.otherwise({
+                redirectTo: '/content1'
+            });
+        }
+    ]);
+</script>
+
+</html>
